@@ -1,0 +1,21 @@
+body{
+  background-color: black;
+  color: #1704EF;
+}
+.clock{
+
+  font-size: 60px;
+  font-family: 'Lato', 'sans-serif';
+  letter-spacing: 7px;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.button{
+  position: absolute;
+  left: 50%;
+  top:60%;
+  border: 2px solid red;
+  transform: translateX(-50%) translateY(-50%);
+}
