@@ -1,0 +1,44 @@
+body {
+  background-color: #17d4ef;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  text-align: center;
+  color: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+.wrapper h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4rem;
+  font-weight: 3rem;
+}
+
+.wrapper #seconds, .wrapper #tens {
+  font-size: 2rem;
+}
+
+.wrapper button {
+  border-radius: 5px;
+  background-color: #17d4ef;
+  color: #FFF;
+  font-size: 2rem;
+  padding: 18px 10px;
+  width: 180px;
+  margin: 10px;
+  border: 2px solid #FFF;
+  cursor: pointer;
+}
+
+.wrapper button:hover {
+  background-color: #FFF;
+  color: #17d4ef;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+/*# sourceMappingURL=style.css.map */
