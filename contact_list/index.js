@@ -3,10 +3,29 @@ const path = require('path')
 const port = 8000;
 
 const app = express(); //app have all functionality to start server
-app.set('view engine', 'ejs'); // setting ejs (Template engine)
 
+app.set('view engine', 'ejs'); // setting ejs (Template engine)
 app.set('views', path.join(__dirname, 'views'));
+
+// MIDDLEWARE
 app.use(express.urlencoded());
+
+//adding a our middleware
+
+// app.use(function(request,response,next){
+//     console.log("middle ware 1");
+//     next();  // call next middleware if present otherwise controller
+// });
+
+// app.use(function(request,response,next){
+//     console.log("Middleware 2");
+//     next();
+// });
+// ------------------------------------------------------------------------------------------------
+//adding static files
+
+app.use(express.static('assets'));
+
 
 var contactList = [
     {
