@@ -66,6 +66,27 @@ app.post('/create_contact',function(request,response){
       return response.redirect('back');
 });
 
+
+//deleting a contact 
+// QYERY  & PARAMS
+//PARAM:->
+// app.get('/delete-contact/:phone',function(request,response){
+//     let phone = request.params.phone;
+//     console.log(phone)
+// });
+
+//QUERY :->
+app.get('/delete-contact',function(request,response){
+    console.log(request.query)
+    let phone = request.query.phone;
+
+    let contactIndex = contactList.findIndex(contact => contact.phone == phone)
+    if(contactIndex != -1)
+    contactList.splice(contactIndex,1);
+    
+    return response.redirect("back");
+});
+
 app.listen(port, function (error) {
     if (error) {
         console.log("Error is running in server", error);

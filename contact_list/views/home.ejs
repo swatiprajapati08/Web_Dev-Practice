@@ -8,33 +8,41 @@
   <title>
     <%= title%>
   </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
-  <h1>Contact List</h1>
-  <div>
+  <h1 id="page-heading">
+    <i class="fas fa-address-book"></i> Contact List
+  </h1>
+  <div id="contacts-list-container">
     <ul>
       <% for(let i of contact_list) { %>
-        <li>
-          <p>
-            <%= i.name %>
-          </p>
-          <p>
-            <%= i.phone %>
-          </p>
+        <li class="contact">
+          <div class="details">
+            <p>
+              <%= i.name %>
+            </p>
+            <p>
+              <%= i.phone %>
+            </p>
+          </div>
+          <div class="delete-button">
+          <a href="/delete-contact/?phone=<%= i.phone%>">
+            <i class="fas fa-window-close"></i>
+          </a>
+          </div>
         </li>
-        <% }%>
+      <% }%>
     </ul>
   </div>
-  <div>
-    <form method="post" action="/create_contact">
-      <input type="text" name="name" required placeholder="enter name">
-      <input type="number" name ="phone" required placeholder="enter phone no"> 
-     <button type="submit">Add contact</button>
-    </form>
-  </div>
+  <form method="post" action="/create_contact">
+    <input type="text" name="name" required placeholder="enter name">
+    <input type="number" name="phone" required placeholder="enter phone no">
+    <button type="submit">Add contact</button>
+  </form>
   <script src="/js/home.js"></script>
 </body>
-
 </html>

@@ -1,5 +1,45 @@
-body{
-    text-align: center;
-    color: blanchedalmond;
-    background-color: rgb(102, 179, 25);
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
 }
+
+#page-heading {
+  /* text-align: center; */
+  margin-top: 25px;
+  color: grey;
+}
+
+.contact {
+  width: 750px;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 0 10px;
+  margin: 2px;
+  display: flex;
+}
+
+.contact:hover {
+  background-color: grey;
+}
+
+.contact .details{
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  flex-direction: row;
+  width: 90%;
+}
+
+.contact .delete-button{
+  width: 10%;
+  padding: 3px;
+  text-align: center;
+  margin: 12px;
+}
+
+
