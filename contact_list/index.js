@@ -2,13 +2,16 @@ const express = require('express');
 const path = require('path')
 const port = 8000;
 
+const db = require('./config/mongoose');
+const Contact = require('./model/contact');
+
 const app = express(); //app have all functionality to start server
 
 app.set('view engine', 'ejs'); // setting ejs (Template engine)
 app.set('views', path.join(__dirname, 'views'));
 
 // MIDDLEWARE
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended : true}));
 
 //adding a our middleware
 
@@ -87,6 +90,8 @@ app.get('/delete-contact',function(request,response){
     return response.redirect("back");
 });
 
+
+//server
 app.listen(port, function (error) {
     if (error) {
         console.log("Error is running in server", error);
