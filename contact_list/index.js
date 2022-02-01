@@ -11,7 +11,7 @@ app.set('view engine', 'ejs'); // setting ejs (Template engine)
 app.set('views', path.join(__dirname, 'views'));
 
 // MIDDLEWARE
-app.use(express.urlencoded({ extended : true}));
+app.use(express.urlencoded({ extended: true }));
 
 //adding a our middleware
 
@@ -45,10 +45,17 @@ var contactList = [
     },];
 
 app.get('/', function (request, response) {
-    return response.render('home', {
-        title: "My Contact list",
-        contact_list : contactList,
-    });  //home file name
+    //getting from db
+    Contact.find({}, function (error, contacts) {
+        if (error) {
+            console.log("Error is running in server", error);
+            return;
+        }
+        return response.render('home', {
+            title: "My Contact list",
+            contact_list: contacts,
+        });  //home file name
+    });
 });
 
 app.get('/practice', function (request, response) {
@@ -57,16 +64,31 @@ app.get('/practice', function (request, response) {
     });
 });
 
-app.post('/create_contact',function(request,response){
+app.post('/create_contact', function (request, response) {
     // contactList.push({
     //     name : request.body.name,
     //     phone : request.body.phone,
     // });
 
-    contactList.push(request.body);
+    // contactList.push(request.body);
 
-//    return response.redirect('/');
-      return response.redirect('back');
+    //adding in database
+    Contact.create({
+        name: request.body.name,
+        phone: request.body.phone
+    }, function (err, newContact) {
+        if (err) {
+            console.log('error in creating a contact');
+            return;
+        }
+        console.log('*********', newContact);
+        return response.redirect('back');
+    });
+
+
+
+    //    return response.redirect('/');
+    //   return response.redirect('back');
 });
 
 
@@ -79,15 +101,24 @@ app.post('/create_contact',function(request,response){
 // });
 
 //QUERY :->
-app.get('/delete-contact',function(request,response){
-    console.log(request.query)
-    let phone = request.query.phone;
+app.get('/delete-contact', function (request, response) {
+    // console.log(request.query)
+    // getting id from url
+    let id = request.query.id;
 
-    let contactIndex = contactList.findIndex(contact => contact.phone == phone)
-    if(contactIndex != -1)
-    contactList.splice(contactIndex,1);
-    
-    return response.redirect("back");
+    // let contactIndex = contactList.findIndex(contact => contact.phone == phone)
+    // if (contactIndex != -1)
+    //     contactList.splice(contactIndex, 1);
+
+    //delete from data 
+    //find the contact from db and delete the db
+    Contact.findByIdAndDelete(id, function (error) {
+        if (error) {
+            console.log('Error in deleting an object');
+            return;
+        }
+        return response.redirect("back");
+    });
 });
 
 
