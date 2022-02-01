@@ -1,7 +1,9 @@
 const { request, response } = require("express")
 
 module.exports.home = function(request,response){
-  return response.end('<h1>Express Codeial</h1>')
+  return response.render('home',{
+      title:"home",
+  });
 }
 
 // module.exports.actionName = function(request,response){}

@@ -6,6 +6,12 @@ console.log('Router loaded');
 
 
 router.get('/',homeController.home);
-router.get('/motto',homeController.motto);
+// router.get('/motto',homeController.motto);
+
+//adding any furhter routes, access from here
+// router.use('routerName',require('./routerFile'))
+
+router.use('/users',require('./users'));
+
 
 module.exports = router;
