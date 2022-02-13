@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
+    <title>
+        <%= title%>
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
+
 <body>
-    <h1>This is codeial /<%= title%> </h1>
+    <h1> TODO APP </h1>
+    <div class="main">
+        <form class="form" method="post" action="/create_task">
+            <input type="text" id="task" name="task" placeholder="Enter Task"><br>
+            <div id="innerform">
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <option value="work">WORK</option>
+                    <option value="school">SCHOOL</option>
+                    <option value="home">HOME</option>
+                </select>
+                <input type="date" name="due_date"><br>
+            </div>
+            <button class="submit-btn" type="submit">Add Item </button>
+        </form>
+        <div id="task-list-container" >
+            <ul>
+                <% for(let i of task_list) { %>
+                    <li class="task">
+                        <img src="images/document.svg">
+                        <div class="details">
+
+                            <div>
+                                <p class="heading">TASK</p>
+                                <%= i.task %>
+                            </div>
+                            <div>
+                                <p class="heading">CATEGORY</p>
+                                <%= i.category %>
+                            </div>
+                            <div>
+                                <p class="heading">DUE DATE</p>
+                                <%= i.due_date %>
+                            </div>
+                        </div>
+                        <div class="delete-button">
+                            <!-- getting id in url -->
+
+                            <a href="//?id=<%= i._id%>">
+                                <img src="images/edit.svg">
+                            </a>
+                        </div>
+                        <div class="delete-button">
+                            <!-- getting id in url -->
+
+                            <a href="/delete-task/?id=<%= i._id%>">
+                                <img src="images/bin.svg">
+                            </a>
+                        </div>
+                    </li>
+                    <% }%>
+            </ul>
+        </div>
+    </div>
+    <script src="/js/home.js"></script>
 </body>
+
 </html>
