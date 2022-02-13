@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../config/mongoose');
-const Todo = require('../models/todo')
+const Todo = require('../models/todo');
+const moment = require('moment');
 // const app = express();
 // const bp = require('body-parser')
 // app.use(bp.json())
@@ -18,6 +19,7 @@ module.exports.getTask = function (request, response) {
         return response.render('home', {
             title: "My Todo list",
             task_list: tasks,
+            moment : moment,
         });
     });
 }
@@ -25,6 +27,7 @@ module.exports.getTask = function (request, response) {
 module.exports.createTask = function (request, response) {
 
     //adding the database
+    
     Todo.create({
         task: request.body.task ,
         category: request.body.category,
