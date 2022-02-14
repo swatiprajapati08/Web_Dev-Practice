@@ -1,5 +1,5 @@
 # Web_Dev-Practice
-[<h1>Pig Game</h1>](//Pig%20Game/README.md/README.md) https://pig-gameusingjs.netlify.app/
+[<h1>Pig Game</h1>](/Pig%20Game/README.md) https://pig-gameusingjs.netlify.app/
 ![Screenshot (17)](https://user-images.githubusercontent.com/42577922/153879769-1312610a-d42b-4473-a09d-fbbee6b46d77.png)
 
 
