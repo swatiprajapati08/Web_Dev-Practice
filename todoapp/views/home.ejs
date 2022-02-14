@@ -20,14 +20,18 @@
         <form class="form" method="post" action="/create_task">
             <input type="text" id="task" name="task" placeholder="Enter Task"><br>
             <div id="innerform">
-                <div></div>
+                <div>
+                    <img id="in-div" src="images/planner.png">
+                </div>
                 <div>
                     <p class="heading">CATEGORY</p>
+                   
                     <select id="category" name="category" >
                         <option value="work">WORK</option>
                         <option value="school">SCHOOL</option>
                         <option value="home">HOME</option>
                     </select>
+    
                 </div>
                 <div>
                     <p class="heading">DUE DATE</p>
@@ -40,7 +44,7 @@
             <ul>
                 <% for(let i of task_list) { %>
                     <li class="task">
-                        <img src="images/document.svg">
+                        <img src="images/document.png">
                         <div class="details">
 
                             <div>
@@ -56,18 +60,16 @@
                                 <%= moment(i.due_date).format('MMM DD, YYYY') %>
                             </div>
                         </div>
-                        <div class="delete-button">
-                            <!-- getting id in url -->
-
+                        <!-- <div class="delete-button">
                             <a href="//?id=<%= i._id%>">
-                                <img src="images/edit.svg">
+                                <img src="images/contract.png">
                             </a>
-                        </div>
+                        </div> -->
                         <div class="delete-button">
                             <!-- getting id in url -->
 
                             <a href="/delete-task/?id=<%= i._id%>">
-                                <img src="images/bin.svg">
+                                <img src="images/bin.png">
                             </a>
                         </div>
                     </li>
