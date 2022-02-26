@@ -1,6 +1,7 @@
 const { request, response } = require("express")
 
 module.exports.home = function(request,response){
+ console.log(request.cookies);
   return response.render('home',{
       title:"home",
   });
