@@ -52,6 +52,8 @@ passport.checkAuthentication = function(request,response,next){
     //if the user id not signed in
     return response.redirect('/users/sign-in');
 }
+
+// user is signed then show views
 passport.setAuthenticatedUser = function(request,response,next){
     if(request.isAuthenticated()){
         // request.user contains the current signed in user from the session cookie and we are just sending this to the local for the views

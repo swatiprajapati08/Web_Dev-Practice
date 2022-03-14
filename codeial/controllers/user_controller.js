@@ -6,12 +6,22 @@ module.exports.profile = function(request,response){
 }
 
 module.exports.signUp = function(request,response){
+    
+    if(request.isAuthenticated()){
+       return response.redirect('/users/profile');
+    }
+
+    
     return response.render('user_sign_up',{
         title: "Codiel | Sign Up",
     });
 };
 
 module.exports.signIn = function(request,response){
+    if(request.isAuthenticated()){
+        return response.redirect('/users/profile');
+     }
+    
     return response.render('user_sign_in',{
         title : "Codiel | SIgn In",
     });
@@ -51,4 +61,10 @@ module.exports.create = function(request,response){
 module.exports.createSession= function(request,response){
     return response.redirect('/');
     //redirect to home when authenticate with passport
+}
+
+
+module.exports.destroySession = function(request,response){
+    request.logout();
+    return response.redirect('/');
 }
