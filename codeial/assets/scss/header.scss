@@ -1,0 +1,13 @@
+header{
+    display: flex;
+    background-color: cadetblue;
+    justify-content: space-between;
+    ul{
+        display: flex;
+        li{
+            list-style: none;
+            padding: 2px;
+            margin: 2px;
+        }
+    }
+}

@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title%></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
     <%- style %>
 </head>
 <body>
     <%- include('_header'); %>
     <!-- body fill accorcding to home.ejs or user.ejs  BODY PART IS VARIABLE PART -->
+    <main id="main-body">
     <%- body%>
+</main>
     
     <%- include('_footer'); %>
     <%- script %>

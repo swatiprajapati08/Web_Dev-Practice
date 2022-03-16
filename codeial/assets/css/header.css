@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  background-color: cadetblue;
+  justify-content: space-between; }
+  header ul {
+    display: flex; }
+    header ul li {
+      list-style: none;
+      padding: 2px;
+      margin: 2px; }
