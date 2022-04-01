@@ -15,7 +15,15 @@ module.exports.home = function (request, response) {
     // });
 
     //find all post and popluate user, putting callback in exec
-    Post.find({}).populate('user').exec(
+    Post.find({})
+    .populate('user')
+    .populate({
+        path:'comments',
+        populate:{
+            path:'user',
+        }
+    })
+    .exec(
         function (error, posts) {
             return response.render('home', {
                 title: "Codeial | Home",

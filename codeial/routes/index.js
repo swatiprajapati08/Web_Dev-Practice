@@ -14,6 +14,6 @@ router.get('/',homeController.home);
 //whenever any request come to /users then go back to users
 router.use('/users',require('./users'));
 router.use('/posts',require('./post'));
-
+router.use('/comments',require('./comments'));
 
 module.exports = router;
