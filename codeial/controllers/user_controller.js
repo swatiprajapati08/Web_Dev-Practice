@@ -1,8 +1,11 @@
 const User = require('../models/user')
 module.exports.profile = function(request,response){
-    return response.render('users',{
-        title:"users",
-    });
+    User.findById(request.params.id,function(error,user){
+        return response.render('users',{
+            title:"users",
+            profile_user:user,
+        });
+    })
 }
 
 module.exports.signUp = function(request,response){
@@ -67,4 +70,21 @@ module.exports.createSession= function(request,response){
 module.exports.destroySession = function(request,response){
     request.logout();
     return response.redirect('/');
+}
+
+
+module.exports.update = function(request,response){
+    if(request.user.id == request.params.id){
+        User.findByIdAndUpdate(request.params.id,
+        //     {
+        //     name: request.body.name,
+        //     email:request.body.email,
+        // } or 
+        request.body,function(error,user){
+            return response.redirect('back');
+        })
+    }
+    else{
+        return response.status(401).send('Unauthorised');
+    }
 }
