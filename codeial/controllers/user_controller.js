@@ -62,6 +62,7 @@ module.exports.create = function(request,response){
 
 //sign in and create a session for the user
 module.exports.createSession= function(request,response){
+    request.flash('success','Logged in successfully');
     return response.redirect('/');
     //redirect to home when authenticate with passport
 }
@@ -69,6 +70,7 @@ module.exports.createSession= function(request,response){
 
 module.exports.destroySession = function(request,response){
     request.logout();
+    request.flash('success','You have logout!');
     return response.redirect('/');
 }
 
